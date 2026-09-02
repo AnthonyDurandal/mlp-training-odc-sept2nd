@@ -3,7 +3,7 @@
 
 Règle : personne ne doit être bloqué par un plantage AVANT son exercice. On
 exécute donc chaque notebook étudiant et on vérifie que la **première** erreur
-rencontrée est bien un NotImplementedError — c'est-à-dire un TODO, et pas un
+rencontrée est bien un NotImplementedError, c'est-à-dire un TODO et pas un
 bug. Les erreurs qui suivent sont normales : elles découlent en cascade de la
 variable que l'exercice n'a pas encore définie.
 """
@@ -45,8 +45,8 @@ for chemin in sorted((RACINE / "notebooks").glob("0*.ipynb")):
                   f"AVANT le premier TODO")
 
     ok_global &= statut == "OK "
-    print(f"{statut} {chemin.name} — {n_todo} exercice(s) — {detail}")
+    print(f"{statut} {chemin.name} : {n_todo} exercice(s), {detail}")
 
 print("\nTous les notebooks étudiants s'arrêtent proprement." if ok_global
-      else "\n⚠️  Au moins un notebook plante avant son exercice — à corriger.")
+      else "\n⚠️  Au moins un notebook plante avant son exercice, à corriger.")
 sys.exit(0 if ok_global else 1)
